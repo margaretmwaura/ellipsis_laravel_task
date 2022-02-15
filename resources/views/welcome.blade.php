@@ -41,10 +41,10 @@
                 <form name="shorten-url" method="POST" action="{{ url('url-create') }}">
                     @csrf
                     <div class="form-group">
-                        <label for="url">URL</label>
-                        <input type="text" id="url" name="url" class="form-control" width="100" height="50" required>
+                        <label for="url" style="color: white">URL</label>
+                        <input type="text" id="url" name="url" class="form-control" style="width: 1000px; height: 50px" required>
                     </div>
-                    <button type="submit" class="btn btn-primary" width="100" height="50">Shorten</button>
+                    <button type="submit" class="btn btn-primary" style="width: 500px; height: 50px; margin-top: 50px">Shorten</button>
                 </form>
             </div>
         </div>

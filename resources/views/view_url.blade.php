@@ -37,8 +37,9 @@
     @endif
 
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-        @if(session('shortUrl'))
+        @if(session()->get( 'shortUrl' ))
             <p>The shortened url is {{ session('shortUrl') }}</p>
+            <a href="{{ session('originalUrl') }}">Exit</a>
         @else
             <p>There is no shortened url yet</p>
         @endif

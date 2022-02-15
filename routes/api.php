@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\UrlApiController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\UrlApiController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -16,4 +15,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('all-urls', [UrlApiController::class, 'allUrls']);
+Route::get('urls', [UrlApiController::class, 'allUrls']);
