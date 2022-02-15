@@ -44,6 +44,8 @@ class DisableShortUrl extends Command
         foreach ($urls as $url ){
             $url->shortened_url = "";
             $url->save();
+
+            \Mail::to('mwauramargaret1@gmail.com')->send(new \App\Mail\ShortUrlDisabled($url));
         }
     }
 }
