@@ -3,30 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UrlResource;
 use App\Models\Url;
-use AshAllenDesign\ShortURL\Classes\Builder;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class UrlController extends Controller
 {
 
-    // TODO add a validator for the url
+    // TODO shortening of the url
     public function store(Request $request)
     {
-        $builder = new Builder();
-
-        $shortURLObject = $builder->destinationUrl($request->url)->make();
-        $shortURL = $shortURLObject->default_short_url;
+        $request->validate([
+            'url' => 'required',
+        ]);
 
         $url = new Url();
-        $url->original_url = $request->title;
-        $url->shortened_url = $shortURL;
-        $url->user_id = Auth::user() ? Auth::user()->id : 0;
+        $url->original_url = $request->url;
+        $url->shortened_url = $request->url;
         $url->save();
-        return redirect('add-blog-post-form')->with($shortURL);
+
+        $shortURL = $request->url;
+
+        return redirect('view-url')->with('shortUrl',$shortURL);
+
     }
 
     public function view(){
         return view('view_url');
     }
+
 }

@@ -19,6 +19,7 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
@@ -37,11 +38,11 @@
             @endif
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{url('url-create')}}">
+                <form name="shorten-url" method="POST" action="{{ url('url-create') }}">
                     @csrf
                     <div class="form-group">
-                        <label for="exampleInputEmail1">URL</label>
-                        <input type="text" id="url" name="url" class="form-control" required="" width="100" height="50">
+                        <label for="url">URL</label>
+                        <input type="text" id="url" name="url" class="form-control" width="100" height="50" required>
                     </div>
                     <button type="submit" class="btn btn-primary" width="100" height="50">Shorten</button>
                 </form>

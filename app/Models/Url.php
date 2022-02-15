@@ -10,11 +10,6 @@ class Url extends Model
 {
     protected $fillable = [
         'original_url',
-        'shortened_url',
-        'user_id',
+        'shortened_url'
     ];
-
-    public function user(){
-        return $this->belongsTo(User::class, 'user_id');
-    }
 }

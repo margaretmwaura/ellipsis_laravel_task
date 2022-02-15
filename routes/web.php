@@ -25,3 +25,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::post('url-create', [UrlController::class, 'store']);
 Route::get('view-url', [UrlController::class, 'view']);
+Route::get('urls', [UrlController::class, 'view']);

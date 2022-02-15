@@ -17,8 +17,6 @@ class CreateUrlsTable extends Migration
             $table->id();
             $table->string('original_url');
             $table->string('shortened_url');
-            $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
