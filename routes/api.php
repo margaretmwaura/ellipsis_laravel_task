@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('urls', [UrlApiController::class, 'allUrls']);
+Route::post('delete_url', [UrlApiController::class, 'deleteUrl']);

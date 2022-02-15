@@ -3,7 +3,7 @@
         <vuetable ref="vuetable"
                   :data="all_urls"
                   :css="css.table"
-                  :fields="['original_url', 'shortened_url']"
+                  :fields="fields"
                   :api-mode="false"
                   pagination-path=""
                   noDataTemplate="No urls added">
@@ -18,7 +18,7 @@ import Vuetable from './../../../node_modules/vuetable-2/src/components/Vuetable
 import CssConfig from "../VuetableConfig";
 
 import axios from 'axios'
-
+import eventBus from "../eventBus";
 export default {
     components: {
         Vuetable,
@@ -27,6 +27,22 @@ export default {
         return {
             css: CssConfig,
             all_urls: [],
+            fields : [
+                {
+                    name: '__component:delete-url',
+                    // name: '__slot:details',
+                    title: 'Delete',
+                    width: '75%',
+                },
+                {
+                    title: 'Original Url',
+                    name: 'original_url',
+                },
+                {
+                    title: 'Shortened Url',
+                    name: 'shortened_url',
+                },
+            ]
         }
     },
     methods: {
@@ -42,6 +58,9 @@ export default {
     },
     mounted() {
         this.getAllUrls()
+        eventBus.$on('reload-table', () => {
+            this.getAllUrls()
+        })
     },
 }
 </script>
